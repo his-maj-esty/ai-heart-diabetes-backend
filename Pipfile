@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langchain = "*"
+langchain-core = "*"
+langchain-community = "*"
+langgraph = "*"
+langchain-google-genai = "*"
+upstash-redis = "*"
+langchain-groq = "*"
+langchain-aws = "*"
+boto3 = "*"
+amazon-textract-caller = "*"
+amazon-textract-textractor = "*"
+pypdf = "*"
+pillow = "*"
+langserve = "*"
+uvicorn = "*"
+fastapi = {extras = ["standard"], version = "*"}
+httpx = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
