@@ -3,7 +3,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import START
 from .custom_types import GraphState
 from .nodes import disease_classifier, simple_conversation, heart_expert, report_router, choose_reports, base_router,analyze_report, deciding_expert, human_input, redefine_reports, has_user_chosen_report
-
+from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
 
 workflow = StateGraph(GraphState)
 
@@ -14,7 +14,6 @@ workflow.add_node("heart_expert_node", heart_expert)
 workflow.add_node("choose_reports_node", choose_reports)
 workflow.add_node("analyze_report_node", analyze_report)
 workflow.add_node("deciding_expert_node", deciding_expert)
-workflow.add_node("human_input_node", human_input)
 workflow.add_node("redefine_reports_node", redefine_reports)
 workflow.add_node("has_user_chosen_report_node", has_user_chosen_report)
 workflow.add_node("simple_conversation_node", simple_conversation)
@@ -51,3 +50,9 @@ graph = workflow.compile(checkpointer=checkpointer_memory, interrupt_before=["hu
 #   chat_id: str
 
 chatbot_chain = graph
+
+image = chatbot_chain.get_graph().draw_mermaid_png(draw_method=MermaidDrawMethod.API)
+
+# Save the image to a file
+with open("~/Desktop/mermaid_diagram.png", "wb") as file:
+    file.write(image)

@@ -246,7 +246,7 @@ def deciding_expert(state: GraphState) -> GraphState:
   is_disease_present = call_model(state["extracted_report_data"])
   template = """
   You are an expert {disease} reports analyzer. You have read the reports of the user. the disease : {disease} is {is_disease_present} according to the reports
-   Don't let the user know that you are a assistant. Clearly mention the disease and the result of the report. Answer in 2-3 lines only.
+   Don't let the user know that you are a assistant. Clearly mention the disease and the result of the report. Explain elaborately to patient.
 
 
    Conversation : {conversation} 
